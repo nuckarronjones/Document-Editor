@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="assets/file-earmark-text.svg">
+
+	<meta charset="utf-8">
+	<title>Flow Editor</title>
+
+	<!-- CUSTOM STYLE SHEET -->
+	<link rel="stylesheet" type="text/css" href="css.css">
+
+	<!-- GOOGLE FONTS -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+	<!-- BOOTSTRAP ICONS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+
+	<div id="toolbar_Container">
+
+		<div id="name_Toolbar" class="toolbar">
+			<ul class="text_Settings_Tools "> 
+
+				<li><i id="logo" class="bi bi-book"></i></li>
+
+				<li><input id="documentName" type="" name="" value="Document Title"></li>
+
+			</ul>
+		</div>
+		<div id="document_Settings" class="toolbar">
+			<ul class="text_Settings_Tools hover"> 
+
+				<li onclick="dropDown('file_Options')">File
+					<div id="file_Options" class="popup_Selector hidden">
+						<ul class="noBullets hover">
+							<li id="btn-export" onclick="exportHTML();">Download (.docx)</li>
+							<li id="print" onclick="printDiv()"> Print<i class="bi bi-printer"></i></li>
+						</ul>
+					</div>
+				</li> 
+
+				<!--li  onclick="dropDown('edit_Options')">Edit
+					<div id="edit_Options" class="popup_Selector hidden">
+						<ul class="noBullets">
+							<li>Undo<i class="bi bi-arrow-counterclockwise"></i></li>
+							<li>Redo<i class="bi bi-arrow-clockwise"></i></li>
+						</ul>
+					</div>
+				</li--> 
+
+			</ul>
+		</div>
+		<div id="text_Settings" class="toolbar">
+			<ul class="text_Settings_Tools hover">
+
+				<li onclick="dropDown('arial')"><span id="fontStyleTitle">Times New Roman</span> <i class="bi bi-chevron-compact-down"></i>
+					<div id="arial" class="popup_Selector hidden">
+						<ul id="fontList" class="noBullets hover">
+							<!-- populate fonts here from js -->
+						</ul>
+					</div>
+				</li> <hr>
+
+				<li onclick="dropDown('12')"><span id="fontSizeTitle">15pt</span> <i class="bi bi-chevron-compact-down"></i>
+					<div id="12" class="popup_Selector hidden">
+						<ul id="font_Sizes" class="noBullets hover">
+
+						</ul>
+					</div>
+				</li><hr>
+
+				<li class="text_Settings_Tools_Item " title="Bold Text" onclick="format('bold')"><button><i class="bi bi-type-bold"></i></li></button>
+
+				<li class="text_Settings_Tools_Item " title="Italic Text" onclick="format('italic')"><button><i class="bi bi-type-italic"></i></button></li>
+
+				<li class="text_Settings_Tools_Item " title="Underline" onclick="format('underline')"><button><i class="bi bi-type-underline"></i></button></li> <hr>
+
+				<li class="text_Settings_Tools_Item " title="Font Color" onclick="dropDown('paintBucket')"><button> <i class="bi bi-paint-bucket"></i></button>
+                    <div id="paintBucket" class="popup_Selector hidden">
+                        <div id="colorGridWrapper">
+                            <!--Generated colors go here from js function-->
+                        </div>
+                    </div>
+                </li><hr>
+
+                <li class="text_Settings_Tools_Item " title="Align Left" onclick="format('justifyLeft')"><button><i class="bi bi-justify-left"></i></button></li> 
+
+				<li class="text_Settings_Tools_Ite m" title="Align Center" onclick="format('justifyCenter')"><button><i class="bi bi-justify"></i></li></button>
+
+				<li class="text_Settings_Tools_Item " title="Align Right" onclick="format('justifyRight')"><button><i class="bi bi-justify-right"></i></li></button> <hr>
+
+				<li title="Line Spacing" onclick="dropDown('line_Spacing')"><button> <i class="bi bi-arrows-expand"></i></button>
+					<div id="line_Spacing" class="popup_Selector hidden">
+						<ul class="noBullets hover">
+							<li onclick="setLineSpacing(1)"> Single </li>
+							<li  onclick="setLineSpacing(1.15)"> 1.15 </li>
+							<li onclick="setLineSpacing(1.5)"> 1.5 </li>
+							<li onclick="setLineSpacing(2)"> Double </li>
+						</ul>
+					</div>
+				</li> 
+
+			</ul>
+		</div>
+	</div>
+
+	<div id="text_Container"><!-- js reads spaces, could mess up counter. leave this all together -->
+		<div id="text_Area" contenteditable style="padding: 96px; font-size: 15pt;">
+			Probably the most effective way to achieve paragraph unity is to express the central idea of the paragraph in a topic sentence.
+
+			Topic sentences are similar to mini thesis statements. Like a thesis statement, a topic sentence has a specific main point. Whereas the thesis is the main point of the essay, the topic sentence is the main point of the paragraph. Like the thesis statement, a topic sentence has a unifying function. But a thesis statement or topic sentence alone doesn’t guarantee unity. An essay is unified if all the paragraphs relate to the thesis, whereas a paragraph is unified if all the sentences relate to the topic sentence. Note: Not all paragraphs need topic sentences. In particular, opening and closing paragraphs, which serve different functions from body paragraphs, generally don’t have topic sentences.
+
+			In academic writing, the topic sentence nearly always works best at the beginning of a paragraph so that the reader knows what to expect:
+
+			The embrace of Twitter by politicians and journalists has been one of its most notable features in recent years: for both groups the use of Twitter is becoming close to a requirement.
+
+			—Paul Bernal, “A Defence of Responsible Tweeting”
+
+			This topic sentence forecasts the central idea or main point of the paragraph: “politicians” and “journalists” rely on Twitter. The rest of the paragraph will focus on these two Twitter-user groups, thereby fulfilling the promise made by the topic sentence. By avoiding irrelevant information that does not relate to the topic sentence, you can compose a unified paragraph.
+		</div>
+        
+	</div>
+
+
+</body>
+
+	<!-- CUSTOM JS -->
+	<script src="js.js"></script>
+</html>
