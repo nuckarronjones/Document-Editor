@@ -86,6 +86,13 @@ function dropDown(targetId){
     }
 
 }
+function displayModal(toggle){
+    if(toggle){
+        document.getElementById("main_Modal").classList.remove("hidden")
+    }else if(toggle == false){
+        document.getElementById("main_Modal").classList.add("hidden")
+    }
+}
 
 
 
