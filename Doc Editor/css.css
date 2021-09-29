@@ -1,4 +1,6 @@
 
+
+
 /*for highlighting color change*/
 ::selection {
   background: #b0a5da; /* WebKit/Blink Browsers */
@@ -65,7 +67,7 @@ select{
 }
 input{
 	border: 2px solid lightgrey;
-	border-radius: 2px;
+	border-radius: 3px;
 	font-family: 'Roboto', sans-serif;
 	padding: 2px;
 	color: grey;
@@ -120,25 +122,20 @@ button{
         	opacity: .5;
         }
         	#modal_Content{
-        		position: relative;
+        		border-radius: 3px;
+        		position: absolute;
+        		justify-content: center;
+        		align-items: center;
         		box-sizing: border-box;
         		padding: 3rem;
         		position: fixed;
         		top: 50%;
 				left: 50%;
-        		min-height: 40vw;
-  				min-width: 63vw;
+        		max-height: 40vw;
+  				max-width: 63vw;
         		background-color: white;
         		z-index: 4;
         		transform: translate(-50%, -50%);
-
-
-        		display: grid;
-        		grid-gap: 1rem;
-        		grid-template-columns: 1fr 2fr;
-        		grid-template-areas:
-
-        		"searchbar iconlist iconList"
         		;
         	}
         		#modal_Exit_BTN{
@@ -147,13 +144,10 @@ button{
         			right: 0;
         			margin: 1rem;
         		}
-        		.searchbar{
-        			padding: 1rem;
-        			border-radius: 3px;
-                    border: 2px solid lightgrey;
-        		}
         		.iconlist{
-        			overflow-y: scroll;
+        			max-height: 30vh;
+  					max-width: 35vw;
+        			overflow-y: overlay;
         			padding: 1rem;
         			border-radius: 3px;
                     border: 2px solid lightgrey;
@@ -163,7 +157,7 @@ button{
         				justify-content: center;
         				align-items: center;
 						display: inline-block;
-						margin: 2rem;
+						margin: .75rem;
 						width: 100px;
 						height: 100px;
 						overflow: auto; 

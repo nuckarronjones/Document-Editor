@@ -1,20 +1,4 @@
-
-function exportHTML(){//export to word document
-    let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
-        "xmlns:w='urn:schemas-microsoft-com:office:word' "+
-        "xmlns='http://www.w3.org/TR/REC-html40'>"+
-        "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
-    let footer = "</body></html>";
-    let sourceHTML = header+document.getElementById("text_Container").innerHTML+footer;
-       
-    let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
-    let fileDownload = document.createElement("a");
-    document.body.appendChild(fileDownload);
-    fileDownload.href = source;
-    fileDownload.download = `${document.getElementById("documentName").value} .doc`;
-    fileDownload.click();
-    document.body.removeChild(fileDownload);
-}
+let textDoc = document.getElementById("text_Area")
 
 let activeDropDown;//active dropdown box being used 
 
@@ -50,6 +34,23 @@ let colors = [
     ["black","#000000"],
     ["white","#FFFFFF"],
 ]
+
+function exportHTML(){//export to word document
+    let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+        "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+        "xmlns='http://www.w3.org/TR/REC-html40'>"+
+        "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+    let footer = "</body></html>";
+    let sourceHTML = header+document.getElementById("text_Container").innerHTML+footer;
+       
+    let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+    let fileDownload = document.createElement("a");
+    document.body.appendChild(fileDownload);
+    fileDownload.href = source;
+    fileDownload.download = `${document.getElementById("documentName").value} .doc`;
+    fileDownload.click();
+    document.body.removeChild(fileDownload);
+}
 
 function printDiv() {//print text area
             let divContents = document.getElementById("text_Container").innerHTML;
@@ -94,8 +95,42 @@ function displayModal(toggle){
     }
 }
 
+textDoc.addEventListener('keydown',function(e) {//for tabbing in text area
+    if(e.keyCode === 9) { // tab was pressed
+        // get caret position/selection
+        let start = this.selectionStart;
+        let end = this.selectionEnd;
+
+        let target = e.target;
+        let value = target.value;
+
+        // set textarea value to: text before caret + tab + text after caret
+        target.value = value.substring(0, start)
+                    + "\t"
+                    + value.substring(end);
+
+        // put caret at right position again (add one for the tab)
+        this.selectionStart = this.selectionEnd = start + 1;
+
+        // prevent the focus lose
+        e.preventDefault();
+    }
+},false);
 
 
+
+
+function insertShape(e){
+    let shape = e.children[0].cloneNode(true)
+
+    shape.style.height ="50px"
+    shape.style.width ="50px"
+    shape.classList.add("on_Page")
+
+    textDoc.appendChild(shape)
+    displayModal(false)
+
+}
 
 function format(command, value) { 
   document.execCommand(command, false, value);
@@ -106,15 +141,15 @@ function setColor(color) {
     document.execCommand('foreColor', false, color);
 }
 function setFont(fontType){
-    document.getElementById("text_Area").style.fontFamily = fontType;
+    textDoc.style.fontFamily = fontType;
     document.getElementById("fontStyleTitle").innerText = fontType;
 }
 function setFontSize(size){
-    document.getElementById("text_Area").style.fontSize = `${size}pt`;
+    textDoc.style.fontSize = `${size}pt`;
     document.getElementById("fontSizeTitle").innerText = `${size}pt`;
 }
 function setLineSpacing(space){
-    document.getElementById("text_Area").style.lineHeight = space;
+    textDoc.style.lineHeight = space;
     console.log("hi")
 }
 
@@ -144,3 +179,9 @@ function buildColors(){//populate colors dropdown with colors
 buildColors();
 buildFonts();
 buildFontSizes();
+
+
+
+/* TESTING FUNCTIONS SANDBOX BELOW */
+/* ================================*/
+
