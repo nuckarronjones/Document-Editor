@@ -172,8 +172,6 @@ function buildColors(){//populate colors dropdown with colors
     for(i = 0; i < colors.length;i++){
         document.getElementById("colorGridWrapper").innerHTML += `<button style='width: 20px; height:20px; background-color:${colors[i][0]}' class='color_Box' onclick='setColor("${colors[i][0]}")'></button>`
     }
-
-    console.log(colors[0])
 }
 
 buildColors();
