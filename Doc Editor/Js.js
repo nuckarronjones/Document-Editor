@@ -35,6 +35,15 @@ let colors = [
     ["white","#FFFFFF"],
 ]
 
+//found this code snipped online.
+//ISSUE: Discovered this last minute. When pasting in text into a content editable, it brought in stylings that made the app unable to function properly with editing. This snippet makes text copied in, have no stylings
+let ce = document.querySelector('[contenteditable]')
+ce.addEventListener('paste', function (e) {
+  e.preventDefault()
+  var text = e.clipboardData.getData('text/plain')
+  document.execCommand('insertText', false, text)
+})
+
 function exportHTML(){//export to word document
     let header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
         "xmlns:w='urn:schemas-microsoft-com:office:word' "+
