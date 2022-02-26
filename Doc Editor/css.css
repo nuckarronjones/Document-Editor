@@ -1,4 +1,10 @@
-
+.githublink {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 30px;
+    font-size: 40px;
+}
 
 
 /*for highlighting color change*/
