@@ -118,7 +118,6 @@ function _setFontSize(size) {
 }
 function setLineSpacing(space) {
   textDoc.style.lineHeight = space;
-  console.log("hi");
 }
 
 function _populateFonts(font) {
